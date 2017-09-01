@@ -1,5 +1,8 @@
 var socket = io(window.location.href);
 
+var $sidebar = document.getElementById('sidebar');
+var $sidebarToggle = document.getElementById('sidebar-toggle');
+var $content = document.querySelector('#content-wrapper .content');
 var $mode = document.getElementById('mode-selector');
 var $font = document.getElementById('font-selector');
 var $theme = document.getElementById('theme-selector');
@@ -41,6 +44,16 @@ if (Cookies.get('fork')) {
 /**
  * Functions
  */
+
+window.toggleSidebar = function () {
+    if ($sidebar.classList.contains('show')) {
+        $sidebar.classList.remove('show');
+        $content.classList.remove('padded');
+    } else {
+        $sidebar.classList.add('show');
+        $content.classList.add('padded');
+    }
+}
 
 window.setFont = function () {
     console.log("Changing font to " + $font.value);
@@ -99,6 +112,7 @@ $font.addEventListener('change', window.setFont);
 $fontSize.addEventListener('change', window.setFontSize);
 $theme.addEventListener('change', window.setTheme);
 $mode.addEventListener('change', window.setMode);
+$sidebarToggle.addEventListener('click', window.toggleSidebar);
 
 if (!readOnly) {
     $saveButton.addEventListener('click', window.savePasta);
