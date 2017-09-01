@@ -1,0 +1,13 @@
+extends layout
+
+block sidebar
+  button(id="fork-button", class="btn btn-block")
+    i(class="fa fa-code-fork")
+    | Fork pasta
+
+  button(id="new-button", class="btn btn-block")
+    i(class="fa fa-file")
+    | New pasta
+
+block content
+  textarea(id="editor", name="code", data-readonly="true", data-mode=modePreset)= content

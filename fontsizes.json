@@ -1,0 +1,10 @@
+[
+    { "size": 10, "default": false },
+    { "size": 11, "default": false },
+    { "size": 12, "default": false },
+    { "size": 14, "default": false },
+    { "size": 16, "default": false },
+    { "size": 18, "default": false },
+    { "size": 20, "default": true },
+    { "size": 22, "default": false }
+]

@@ -1,0 +1,49 @@
+div(id="sidebar")
+  div(class='title') PastaBin
+    img(src='/images/logo.png' class='logo') 
+
+  div(class='content')
+    block sidebar
+
+    h4 Settings
+
+    div(id="settings")
+      h5 Language:
+
+      div(class="styled-select")
+        select(id="mode-selector")
+          each mode in modes
+            option(value=mode.mode, selected=(modePreset == mode.mode)) #{mode.name}
+        i(class="fa fa-caret-down")
+
+      h5 Font:
+
+      div(class="styled-select")
+        select(id="font-selector")
+          each font in fonts
+            option(value=font.url) #{font.name}
+        i(class="fa fa-caret-down")
+
+      h5 Font size:
+
+      div(class="styled-select")
+        select(id="fontsize-selector")
+          each fontsize in fontsizes
+            option(value=fontsize.size, selected=fontsize.default) #{fontsize.size}
+        i(class="fa fa-caret-down")
+
+      h5 Theme:
+
+      div(class="styled-select")
+        select(id="theme-selector")
+          each theme in themes
+            option(value=theme.id, selected=theme.default) #{theme.name}
+        i(class="fa fa-caret-down")
+
+  div(class='footer')
+    h2 Powered by
+
+    ul(class='powered-by')
+      li ExpressJS
+      li NodeJS
+      li Ace

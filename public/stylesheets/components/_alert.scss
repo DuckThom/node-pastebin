@@ -1,0 +1,20 @@
+@import '../colors';
+
+#alert {
+  position: fixed;
+  padding: 10px;
+  width: 300px;
+  text-align: center;
+  left: 50%;
+  bottom: -999px;
+  margin-left: -150px;
+  color: $base3;
+
+  &.alert-error {
+    background-color: $red;
+  }
+
+  &.alert-success {
+    background-color: $green;
+  }
+}

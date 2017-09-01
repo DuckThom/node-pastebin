@@ -1,0 +1,30 @@
+@import '../colors';
+
+#content-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    min-width: 100%;
+    padding: 0 0 0 300px;
+    transition: all 500ms;
+    transition-property: padding;
+  }
+}
+
+@media only screen and (max-width: 699px) {
+  #content-wrapper {
+    .content {
+      padding: 0;
+
+      &.padded {
+        padding: 0 0 0 300px;
+      }
+    }
+  }
+}

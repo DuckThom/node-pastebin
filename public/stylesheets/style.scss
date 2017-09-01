@@ -1,0 +1,38 @@
+// Font
+@import url('https://fonts.googleapis.com/css?family=Dosis:200,300,500');
+
+// Components
+@import 'components/content';
+@import 'components/sidebar';
+@import 'components/alert';
+
+// General Styling
+html,
+body {
+  font-family: 'Dosis', sans-serif;
+  background: #002b36;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+button {
+  .fa {
+    padding: 0 10px;
+  }
+}
+
+// Overrides
+.ace_editor {
+  height: 100% !important;
+  margin: 0;
+
+  &:hover {
+    cursor: text;
+  }
+}

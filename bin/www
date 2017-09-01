@@ -1,0 +1,165 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var sqlite3 = require('sqlite3').verbose();
+var app = require('../app');
+var debug = require('debug')('node-pb:server');
+var http = require('http');
+const uuidv1 = require('uuid/v1');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+var io = require('socket.io')(server);
+
+/**
+ * Setup database
+ */
+var db = new sqlite3.Database('./db.sqlite');
+
+db.configure('busyTimeout', 10000); // Wait for 10 seconds when busy
+
+db.serialize(function () {
+  db.run("CREATE TABLE IF NOT EXISTS pastes (id INTEGER PRIMARY KEY AUTOINCREMENT, url VARCHAR(10), data TEXT, mode VARCHAR(20), created_at TIMESTAMP)");
+});
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+io.on('connection', onSocketConnection);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for Socket.io "connection" event.
+ */
+
+function onSocketConnection (socket) {
+    console.log('Connection from ' + socket.handshake.address);
+
+    socket.on('save', onSocketSave);
+    socket.on('fork', onSocketFork);
+}
+
+/**
+ * Event listener for save event.
+ */
+
+function onSocketSave (data, callback) {
+  // Url, Data, Created at
+  db.serialize(function () {
+    var stmt = db.prepare("INSERT INTO pastes(url, data, mode, created_at) VALUES (?, ?, ?, ?)");
+    var url = uuidv1();
+
+    stmt.run(url, data.content, data.mode, new Date);
+
+    stmt.finalize();
+
+    callback({ url: url });
+  });
+}
+
+/**
+ * Event listener for fork event.
+ */
+function onSocketFork (data, callback) {
+  if (!data.url) {
+    callback({
+      content: ""
+    });
+  }
+
+  db.serialize(function () {
+    var stmt = db.prepare("SELECT data, mode FROM pastes WHERE url = ?");
+
+    stmt.get(data.url, function (err, row) {
+      if (err) {
+        debug(err);
+
+        return;
+      }
+
+      callback({
+        content: row.data,
+        mode: row.mode
+      });
+    });
+
+    stmt.finalize();
+  });
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}

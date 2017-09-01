@@ -1,0 +1,9 @@
+extends layout
+
+block sidebar
+  button(id="save-button", class="btn btn-block")
+    i(class="fa fa-floppy-o")
+    | Save pasta
+
+block content
+  textarea(id="editor", name="code")

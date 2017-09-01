@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css?family=Dosis:200,300,500");
+#content-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%; }
+  #content-wrapper .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    min-width: 100%;
+    padding: 0 0 0 300px;
+    transition: all 500ms;
+    transition-property: padding; }
+
+@media only screen and (max-width: 699px) {
+  #content-wrapper .content {
+    padding: 0; }
+    #content-wrapper .content.padded {
+      padding: 0 0 0 300px; } }
+
+#sidebar-toggle {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  padding: 5px;
+  z-index: 9001;
+  border: 1px solid #fdf6e3;
+  border-radius: 5px;
+  background-color: #002b36; }
+  #sidebar-toggle:hover {
+    cursor: pointer;
+    background-color: #fdf6e3; }
+    #sidebar-toggle:hover .bar {
+      border-bottom: 1px solid #002b36; }
+  #sidebar-toggle .bar {
+    border-bottom: 1px solid #fdf6e3;
+    display: block;
+    width: 25px;
+    margin: 8px; }
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  background: #fdf6e3;
+  color: #b58900;
+  text-align: center;
+  z-index: 10;
+  transition: all 500ms;
+  transition-property: left; }
+  #sidebar hr {
+    border: 1px solid #268bd2;
+    margin: 10px 0; }
+  #sidebar .title {
+    background-color: #b58900;
+    color: #fdf6e3;
+    font-size: 30px;
+    padding: 40px 0;
+    font-weight: 200;
+    position: relative; }
+    #sidebar .title .logo {
+      height: 80px;
+      position: absolute;
+      left: 30px;
+      top: 15px; }
+  #sidebar .content {
+    padding: 5px; }
+    #sidebar .content h5 {
+      display: block;
+      text-align: left;
+      color: #002b36;
+      margin: 10px 0 5px;
+      font-weight: 400; }
+    #sidebar .content .styled-select {
+      position: relative; }
+      #sidebar .content .styled-select select {
+        display: block;
+        width: 100%;
+        border: 1px solid #cb4b16;
+        color: #002b36;
+        background-color: #fdf6e3;
+        padding: 5px 10px;
+        border-radius: 0;
+        font-size: 15px;
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none; }
+      #sidebar .content .styled-select .fa {
+        position: absolute;
+        right: 7px;
+        top: 7px;
+        color: #002b36;
+        pointer-events: none; }
+    #sidebar .content .btn {
+      padding: 5px 10px;
+      margin: 5px 0;
+      border: 0;
+      text-transform: uppercase;
+      font-family: 'Dosis', sans-serif;
+      font-weight: 500;
+      color: #fdf6e3;
+      background-color: #cb4b16;
+      text-decoration: none;
+      font-size: 15px; }
+      #sidebar .content .btn-block {
+        display: block;
+        width: 100%; }
+      #sidebar .content .btn:hover {
+        cursor: pointer; }
+    #sidebar .content dl {
+      font-size: 20px;
+      font-weight: 300; }
+      #sidebar .content dl dt, #sidebar .content dl dd {
+        display: inline;
+        margin: 0;
+        clear: right; }
+      #sidebar .content dl dt {
+        float: left; }
+      #sidebar .content dl dd {
+        float: right; }
+  #sidebar .footer {
+    padding: 20px 5px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0; }
+    #sidebar .footer h2 {
+      text-transform: uppercase;
+      font-weight: 300; }
+    #sidebar .footer .powered-by {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      font-size: 20px;
+      font-weight: 200;
+      display: flex;
+      justify-content: space-around; }
+      #sidebar .footer .powered-by li {
+        display: inline-block; }
+
+@media only screen and (min-width: 700px) {
+  #sidebar-toggle {
+    display: none; } }
+
+@media only screen and (max-width: 699px) {
+  #sidebar {
+    left: -300px; }
+    #sidebar.show {
+      left: 0; } }
+
+#alert {
+  position: fixed;
+  padding: 10px;
+  width: 300px;
+  text-align: center;
+  left: 50%;
+  bottom: -999px;
+  margin-left: -150px;
+  color: #fdf6e3; }
+  #alert.alert-error {
+    background-color: #dc322f; }
+  #alert.alert-success {
+    background-color: #859900; }
+
+html,
+body {
+  font-family: 'Dosis', sans-serif;
+  background: #002b36;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+button .fa {
+  padding: 0 10px; }
+
+.ace_editor {
+  height: 100% !important;
+  margin: 0; }
+  .ace_editor:hover {
+    cursor: text; }
+
+/*# sourceMappingURL=style.css.map */

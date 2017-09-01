@@ -1,0 +1,14 @@
+[
+    { "id": "ambiance", "name": "Ambiance", "default": false },
+    { "id": "crimson", "name": "Crimson", "default": false },
+    { "id": "dawn", "name": "Dawn", "default": false },
+    { "id": "github", "name": "GitHub", "default": false },
+    { "id": "merbivore", "name": "Merbivore" , "default": false},
+    { "id": "monokai", "name": "Monokai", "default": false },
+    { "id": "solarized_dark", "name": "Solarized Dark", "default": true },
+    { "id": "solarized_light", "name": "Solarized Light", "default": false },
+    { "id": "tomorrow", "name": "Tomorrow", "default": false },
+    { "id": "tomorrow_night", "name": "Tomorrow Night", "default": false },
+    { "id": "twilight", "name": "Twilight", "default": false },
+    { "id": "xcode", "name": "XCode", "default": false }
+]

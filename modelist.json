@@ -1,0 +1,17 @@
+[
+    { "mode": "ace/mode/php",        "name": "PHP" },
+    { "mode": "ace/mode/javascript", "name": "JavaScript" },
+    { "mode": "ace/mode/css",        "name": "CSS" },
+    { "mode": "ace/mode/lua",        "name": "Lua" },
+    { "mode": "ace/mode/html",       "name": "HTML" },
+    { "mode": "ace/mode/coffee",     "name": "CoffeeScript" },
+    { "mode": "ace/mode/xml",        "name": "XML" },
+    { "mode": "ace/mode/json",       "name": "JSON" },
+    { "mode": "ace/mode/golang",     "name": "Go" },
+    { "mode": "ace/mode/kotlin",     "name": "Kotlin" },
+    { "mode": "ace/mode/less",       "name": "LESS" },
+    { "mode": "ace/mode/sass",       "name": "SASS" },
+    { "mode": "ace/mode/scss",       "name": "SCSS" },
+    { "mode": "ace/mode/ruby",       "name": "Ruby" },
+    { "mode": "ace/mode/rust",       "name": "Rust" }
+]
