@@ -140,6 +140,9 @@
       justify-content: space-around; }
       #sidebar .footer .powered-by li {
         display: inline-block; }
+  @media only screen and (max-height: 580px) {
+    #sidebar .footer {
+      display: none; } }
 
 @media only screen and (min-width: 700px) {
   #sidebar-toggle {

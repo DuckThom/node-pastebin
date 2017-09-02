@@ -119,7 +119,7 @@
         cursor: pointer;
       }
     }
- 
+
     dl {
       font-size: 20px;
       font-weight: 300;
@@ -129,11 +129,11 @@
         margin: 0;
         clear: right;
       }
-      
+
       dt {
         float: left;
       }
-      
+
       dd {
         float: right;
       }
@@ -164,6 +164,12 @@
       li {
         display: inline-block;
       }
+    }
+  }
+
+  @media only screen and (max-height: 580px) {
+    .footer {
+      display: none;
     }
   }
 }
