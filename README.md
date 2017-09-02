@@ -19,6 +19,5 @@ When mounting the node_modules folder, the modules do not need to be re-installe
 docker run -it \
 	-p 3000:3000 \
 	-v /path/to/node_modules:/app/node_modules \
-	-v /path/to/db.sqlite:/app/db.sqlite \
 	lunamoonfang/node-pastebin
 ```
